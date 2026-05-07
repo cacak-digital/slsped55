@@ -3,126 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SL ŠPED 55 | Premium Transport Čačak</title>
-    
+    <title>SL ŠPED 55 | Premium Transport</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <style>
-        /* CSS RESTART & VARIJABLE */
         :root {
             --primary: #0a192f;
             --accent: #e11d48;
             --white: #ffffff;
             --grey: #94a3b8;
             --bg-dark: #020617;
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         body { background-color: var(--white); color: var(--primary); overflow-x: hidden; }
 
-        /* ANIMACIJE PRI SKROLU */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* NAVIGACIJA */
+        /* NAVIGACIJA - Fix za preklapanje */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 10px 8%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: 70px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            color: white;
-            font-weight: 900;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: -1px;
-        }
-
+        .logo-text { font-size: 1.5rem; font-weight: 900; color: var(--primary); text-decoration: none; }
         .logo-text span { color: var(--accent); }
 
-        .nav-links { display: flex; gap: 40px; list-style: none; }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* HERO SEKCIJA (SCANIA) */
+        /* HERO - Fix za Scania sliku i tekst */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.4)), 
-                        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1920') center center / cover no-repeat;
             display: flex;
             align-items: center;
             padding: 0 8%;
             color: white;
+            padding-top: 70px;
         }
-
         .hero-content { max-width: 800px; }
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+        .hero h1 {
+            font-size: clamp(2.2rem, 8vw, 5rem);
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
-        .hero-content h1 span { color: var(--accent); }
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            color: var(--grey);
-            max-width: 600px;
-        }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.2rem; color: var(--grey); margin-bottom: 30px; max-width: 600px; }
 
         .btn {
-            padding: 20px 45px;
+            padding: 18px 40px;
             background: var(--accent);
             color: white;
             text-decoration: none;
@@ -130,42 +67,34 @@
             text-transform: uppercase;
             border-radius: 4px;
             display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 15px 30px rgba(225, 29, 72, 0.3);
+            transition: 0.3s;
         }
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(225, 29, 72, 0.5); }
 
-        /* USLUGE */
+        /* VRACEN LEPI DIZAJN ZA USLUGE */
         .services { padding: 120px 8%; background: var(--white); }
-        .section-tag { color: var(--accent); font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .section-title { font-size: 3rem; font-weight: 900; margin-bottom: 60px; }
-
+        .section-title { font-size: 3rem; font-weight: 900; margin-bottom: 60px; text-transform: uppercase; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .card {
             padding: 60px 40px;
             background: #f8fafc;
             border-radius: 20px;
-            transition: var(--transition);
+            transition: 0.4s;
             border-bottom: 5px solid transparent;
         }
         .card:hover { transform: translateY(-10px); background: white; box-shadow: 0 30px 60px rgba(0,0,0,0.05); border-bottom: 5px solid var(--accent); }
         .card h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 900; }
         .card p { color: #64748b; line-height: 1.8; }
 
-        /* KONTAKT SEKCIJA */
+        /* VRACEN LEPI KONTAKT (TAMNI) */
         .contact { padding: 120px 8%; background: var(--bg-dark); color: white; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
-
         .contact-info h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 40px; }
         .info-item { margin-bottom: 30px; }
-        .info-item label { color: var(--accent); font-weight: 900; text-transform: uppercase; font-size: 0.8rem; }
+        .info-item label { color: var(--accent); font-weight: 900; text-transform: uppercase; font-size: 0.8rem; display: block; }
         .info-item p { font-size: 1.5rem; font-weight: 700; margin-top: 5px; }
-        .info-item a { color: white; text-decoration: none; transition: 0.3s; }
-        .info-item a:hover { color: var(--accent); }
+        .info-item a { color: white; text-decoration: none; }
 
-        form { background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; }
-        .input-group { margin-bottom: 25px; }
-        .input-group label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; }
+        form { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; }
         input, textarea {
             width: 100%;
             padding: 15px;
@@ -173,10 +102,9 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             color: white;
+            margin-bottom: 20px;
             outline: none;
-            font-size: 1rem;
         }
-        input:focus, textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.15); }
         .submit-btn {
             width: 100%;
             padding: 20px;
@@ -186,130 +114,82 @@
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            transition: 0.3s;
             border-radius: 8px;
         }
-        .submit-btn:hover { background: #be123c; }
 
-        /* FOOTER */
-        footer { padding: 60px 8%; background: #000; text-align: center; color: #475569; }
+        footer { padding: 40px 8%; background: #000; text-align: center; color: #475569; font-size: 0.9rem; }
 
+        /* MOBILNA POPRAVKA */
         @media (max-width: 1024px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero { text-align: center; justify-content: center; }
-            .nav-links { display: none; }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+            .contact-info h2 { font-size: 2.5rem; }
+            .hero { text-align: center; justify-content: center; background-position: 30% center; }
+            .hero p { margin-inline: auto; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">
-            <div class="logo-icon">SL</div>
-            <div class="logo-text">ŠPED <span>55</span></div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#pocetna">Početna</a></li>
-            <li><a href="#usluge">Usluge</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
+        <a href="#" class="logo-text">SL <span>ŠPED 55</span></a>
     </nav>
 
-    <section id="pocetna" class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <span class="section-tag" style="color: white;">Transport & Logistika</span>
             <h1>VAŠA ROBA, <br>NAŠA <span>ODGOVORNOST</span></h1>
-            <p>Premium transportne usluge. Povezujemo Čačak sa svim krajevima Evrope brzo, sigurno i bezbedno.</p>
+            <p>Premium transportne usluge. Povezujemo Čačak sa svim krajevima Evrope brzo i sigurno.</p>
             <a href="#kontakt" class="btn">Zatražite ponudu</a>
         </div>
     </section>
 
     <section id="usluge" class="services">
-        <span class="section-tag reveal">Naša ekspertiza</span>
-        <h2 class="section-title reveal">Usluge Transporta</h2>
-        
+        <h2 class="section-title">Usluge Transporta</h2>
         <div class="grid">
-            <div class="card reveal">
+            <div class="card">
                 <h3>Međunarodni Transport</h3>
                 <p>Specijalizovani za prevoz robe širom Evropske unije. Vaš partner za Nemačku, Austriju, Italiju i šire.</p>
             </div>
-            <div class="card reveal">
+            <div class="card">
                 <h3>Domaći Transport</h3>
                 <p>Efikasna mreža pokrivenosti cele Srbije sa fokusom na tačnost i bezbednost utovara.</p>
             </div>
-            <div class="card reveal">
+            <div class="card">
                 <h3>Scania & Volvo</h3>
-                <p>Naša vozila su opremljena najmodernijom tehnologijom za praćenje i ispunjavaju Euro 6 standarde.</p>
+                <p>Naša vozila ispunjavaju najstrože standarde i opremljena su sistemima za satelitsko praćenje.</p>
             </div>
         </div>
     </section>
 
-    <section id="kontakt" class="contact">
+    <section id="contact" class="contact">
         <div class="contact-grid">
-            <div class="contact-info reveal">
-                <span class="section-tag">Dostupni 24/7</span>
+            <div class="contact-info">
                 <h2>Idemo <span>zajedno</span> do cilja</h2>
-                
                 <div class="info-item">
                     <label>Pozovite nas</label>
                     <p><a href="tel:+381628927429">+381 62 892 7429</a></p>
                 </div>
-                
                 <div class="info-item">
                     <label>Pišite nam</label>
                     <p><a href="mailto:sl.sped55@gmail.com">sl.sped55@gmail.com</a></p>
                 </div>
-                
-                <div class="info-item">
-                    <label>Sedište</label>
-                    <p>Čačak, Srbija</p>
-                </div>
-                
                 <div class="info-item">
                     <label>Instagram</label>
                     <p><a href="https://instagram.com/sl.sped55" target="_blank">@sl.sped55</a></p>
                 </div>
             </div>
 
-            <form action="https://formspree.io/f/sl.sped55@gmail.com" method="POST" class="reveal">
-                <div class="input-group">
-                    <label>Vaše Ime i Prezime</label>
-                    <input type="text" name="name" placeholder="Marko Marković" required>
-                </div>
-                <div class="input-group">
-                    <label>Vaš Email</label>
-                    <input type="email" name="_replyto" placeholder="primer@mejl.com" required>
-                </div>
-                <div class="input-group">
-                    <label>Poruka / Detalji transporta</label>
-                    <textarea name="message" rows="5" placeholder="Gde šaljete robu?" required></textarea>
-                </div>
+            <form action="https://formspree.io/f/sl.sped55@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Ime i prezime" required>
+                <input type="email" name="email" placeholder="Vaš Email" required>
+                <textarea name="message" rows="5" placeholder="Vaša poruka..." required></textarea>
                 <button type="submit" class="submit-btn">Pošalji Upit</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 SL ŠPED 55 Čačak. Sva prava zadržana. <br> Powered by Scania Power.</p>
+        &copy; 2026 SL ŠPED 55 Čačak. Sva prava zadržana.
     </footer>
-
-    <script>
-        // SCRIPT ZA OTKRIVANJE ELEMENATA PRI SKROLU
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Pokreni jednom na loadu
-        reveal();
-    </script>
 
 </body>
 </html>
